@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alec Pibre - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="popup-overlay"></div>
+
+  <!-- LOADING -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <h1>Portfolio PIBRE - Alec</h1>
+      <p>Chargement<span id="dots">.</span></p>
+      <div class="progress-bar">
+        <canvas id="particle-progress"></canvas>
+        <div class="progress-overlay">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE -->
+  <div id="site-content" class="container">
+
+    <aside class="sidebar left">
+      <div id="profile" class="box profile">
+        <h2 data-text="PROFIL">PROFIL</h2>
+        <p><strong>Nom</strong><br>PIBRE</p>
+        <p><strong>Prénom</strong><br>Alec</p>
+        <p><strong>Âge</strong><br>20 ans</p>
+        <p><strong>Pays</strong><br>France</p>
+        <p><strong>Statut</strong><br>Étudiant</p>
+      </div>
+      <div class="box cv">
+        <a href="documents/CV alternance - PIBRE Alec.pdf" download target="_blank" rel="noopener noreferrer">CV<br><span>téléchargement</span></a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h1 class="main-title" data-text="ALEC PIBRE">ALEC PIBRE</h1>
+      <canvas id="particles"></canvas>
+    </main>
+
+    <aside class="sidebar right">
+      <div class="box skills" id="skills">
+        <h2 data-text="SKILLS">SKILLS</h2>
+        <p><strong>Data / IA</strong><br>Analyse & modèles</p>
+        <p><strong>Web</strong><br>Front & back</p>
+        <p><strong>Logiciel</strong><br>Apps & scripts</p>
+      </div>
+      <div class="box contact">
+        <h2>CONTACT</h2>
+        <p><strong>Téléphone</strong><br>07.72.72.40.63</p>
+        <p><strong>Email</strong><br><a href="pibre.alec@gmail.com" class="__cf_email__" data-cfemail="pibre.alec@gmail.com" target="_blank" rel="noopener noreferrer">pibre.alec@gmail.com</a></p>
+        <p><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/pibre-alec/" target="_blank" rel="noopener noreferrer"">Lien</a></p>
+        <p><strong>Github</strong><br><a href="https://github.com/Alec34pi" target="_blank" rel="noopener noreferrer">Lien</a></p>
+      </div>
+    </aside>
+
+    <footer class="footer">
+      <div class="footer-box" id="projpro">
+        <h2 data-text="PROJET PROFESSIONNEL">PROJET PROFESSIONNEL</h2>
+        <p>Alternance Orange <span class="badge-encours">EN COURS</span></p>
+        <p>Stage IRTS</p>
+        <p>Stage BRB Corp</p>
+        <p>Stage Orchestra</p>
+      </div>
+      <div class="footer-box" id="projform">
+        <h2 data-text="PROJET FORMATION">PROJET FORMATION</h2>
+        <p>Yshop</p>
+        <p>Prediction AQI</p>
+        <p>Détection Fraude</p>
+        <p>Churn Télécom</p>
+      </div>
+      <div class="footer-box" id="projperso">
+        <h2 data-text="PROJET PERSONNEL">PROJET PERSONNEL</h2>
+        <p>DashQuest</p>
+        <p>post-it-wall</p>
+        <p>SimpleGames</p>
+        <p>LotoPredict</p>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- ========== POPUP PROFIL ========== -->
+  <div id="profile-popup" class="popup-hidden popup-profil">
+    <div class="header-popup">
+      <div class="header2-popup"><h2>PROFIL</h2></div>
+      <button class="close-popup" data-popup="profile-popup">ESC</button>
+    </div>
+    <div class="body-profil-popup">
+      <div class="left-profil-popup">
+        <div class="infos-profil-popup"><p><b>NOM</b></p><p>PIBRE</p></div>
+        <div class="infos-profil-popup"><p><b>PRÉNOM</b></p><p>Alec</p></div>
+        <div class="infos-profil-popup"><p><b>ÂGE</b></p><p>20 ans</p></div>
+        <div class="infos-profil-popup"><p><b>PAYS</b></p><p>France</p></div>
+        <div class="infos-profil-popup"><p><b>STATUT</b></p><p>Étudiant</p></div>
+      </div>
+      <div class="right-profil-popup">
+        <div class="cours-profil-popup"><p class="date">2025–2027</p><p>Master Data Engineer, alternance chez ORANGE. <span class="badge-encours">EN COURS</span></p></div>
+        <div class="cours-profil-popup"><p class="date">2024–2025</p><p>Bachelor 3 en Data et Intelligence Artificielle, analyse des données, modèle de prédiction.</p></div>
+        <div class="cours-profil-popup"><p class="date">2022–2024</p><p>BTS SIO option SLAM, développement web, client lourd, et bases de données.</p></div>
+        <div class="cours-profil-popup"><p class="date">2019–2022</p><p>Bac STI2D option SIN, découverte de l'univers informatique.</p></div>
+
+        <p class="profil-hobbies">En dehors de l'écran, je suis passionné par le VTT de descente et le basket — deux activités qui m'apprennent à repousser mes limites.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========== POPUP SKILLS ========== -->
+  <div id="skills-popup" class="popup-hidden popup-skills">
+    <div class="header-popup">
+      <div class="header2-popup"><h2>SKILLS</h2></div>
+      <button class="close-popup" data-popup="skills-popup">ESC</button>
+    </div>
+
+    <div class="skills-section">
+      <h3 class="skills-cat">DATA · IA</h3>
+      <div class="skill-bars">
+        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div><span class="skill-pct">75%</span></div>
+        <div class="skill-row"><span class="skill-name">GCP / BigQuery</span><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div><span class="skill-pct">60%</span></div>
+        <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div><span class="skill-pct">80%</span></div>
+        <div class="skill-row"><span class="skill-name">Looker Studio</span><div class="skill-bar"><div class="skill-fill" data-width="50"></div></div><span class="skill-pct">50%</span></div>
+        <div class="skill-row"><span class="skill-name">Pandas / Numpy</span><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div><span class="skill-pct">60%</span></div>
+        <div class="skill-row"><span class="skill-name">Scikit-learn</span><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div><span class="skill-pct">60%</span></div>
+        <div class="skill-row"><span class="skill-name">Scrapy</span><div class="skill-bar"><div class="skill-fill" data-width="60"></div></div><span class="skill-pct">60%</span></div>
+        <div class="skill-row"><span class="skill-name">SQL / MySQL</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div><span class="skill-pct">90%</span></div>
+      </div>
+    </div>
+
+    <div class="skills-divider"></div>
+
+    <div class="skills-two-cols">
+      <div class="skills-section">
+        <h3 class="skills-cat">WEB</h3>
+        <div class="skill-bars">
+          <div class="skill-row"><span class="skill-name">HTML / CSS</span><div class="skill-bar"><div class="skill-fill" data-width="75"></div></div><span class="skill-pct">75%</span></div>
+          <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div><span class="skill-pct">65%</span></div>
+          <div class="skill-row"><span class="skill-name">PHP / Symfony</span><div class="skill-bar"><div class="skill-fill" data-width="55"></div></div><span class="skill-pct">55%</span></div>
+        </div>
+      </div>
+      <div class="skills-section">
+        <h3 class="skills-cat">LOGICIEL</h3>
+        <div class="skill-bars">
+          <div class="skill-row"><span class="skill-name">C++ / C#</span><div class="skill-bar"><div class="skill-fill" data-width="70"></div></div><span class="skill-pct">70%</span></div>
+          <div class="skill-row"><span class="skill-name">Unity</span><div class="skill-bar"><div class="skill-fill" data-width="45"></div></div><span class="skill-pct">45%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========== POPUP PROJET PROFESSIONNEL ========== -->
+  <div id="projpro-popup" class="popup-hidden popup-projpro">
+    <div class="header-popup">
+      <div class="header2-popup"><h2>PROJET PROFESSIONNEL</h2></div>
+      <button class="close-popup" data-popup="projpro-popup">ESC</button>
+    </div>
+    <div class="body-projet-popup timeline">
+
+      <div class="projet-item active">
+        <div class="timeline-marker"><span class="tl-dot active-dot"></span><span class="tl-line"></span></div>
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">01</span>
+            <span class="projet-date">Sep 2025 - Sep 2027</span>
+            <span class="projet-titre">Alternance Orange</span>
+            <span class="badge-encours">EN COURS</span>
+            <span class="projet-role">Data Analyst</span>
+          </div>
+          <p class="projet-desc">Visualisation de performances et contrôle qualité des prestations techniciens au sein d'une équipe de contrôle.</p>
+          <div class="projet-tags">
+            <span class="tag">GCP BigQuery</span><span class="tag">Power BI</span><span class="tag">Looker Studio</span><span class="tag">Power Automate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item">
+        <div class="timeline-marker"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">02</span>
+            <span class="projet-date">Mar – Mai 2025</span>
+            <span class="projet-titre">Stage IRTS Montpellier</span>
+            <span class="projet-role">Développeur / Data</span>
+          </div>
+          <p class="projet-desc">Création d'un chatbot de suggestions de formations à partir des soft-skills utilisateur, et d'un outil de scrapping des soft-skills par formation/métier pour alimenter le bot.</p>
+          <div class="projet-tags">
+            <span class="tag">Python</span><span class="tag">GitHub</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item">
+        <div class="timeline-marker"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">03</span>
+            <span class="projet-date">Avr – Mai 2024</span>
+            <span class="projet-titre">Stage BRB Corp</span>
+            <span class="projet-role">Développeur Web E-Commerce</span>
+          </div>
+          <p class="projet-desc">Création et mise en place d'un site Shopify ainsi que d'un site de vente de chaussures en Symfony 7, déployé en ligne.</p>
+          <div class="projet-tags">
+            <span class="tag">Symfony 7</span><span class="tag">PHP</span><span class="tag">SQL</span><span class="tag">CSS</span><span class="tag">Twig</span><span class="tag">Shopify</span><span class="tag">GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item">
+        <div class="timeline-marker"><span class="tl-dot"></span></div>
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">04</span>
+            <span class="projet-date">Juin 2023</span>
+            <span class="projet-titre">Stage Orchestra (NewOrch)</span>
+            <span class="projet-role">Data Analyst</span>
+          </div>
+          <p class="projet-desc">Création d'un tableau de bord de suivi de performances IT pour le service IT Magasin, à partir des données GLPI.</p>
+          <div class="projet-tags">
+            <span class="tag">GLPI</span><span class="tag">SQL</span><span class="tag">Analyse</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========== POPUP PROJET FORMATION ========== -->
+  <div id="projform-popup" class="popup-hidden popup-projform">
+    <div class="header-popup">
+      <div class="header2-popup"><h2>PROJET FORMATION</h2></div>
+      <button class="close-popup" data-popup="projform-popup">ESC</button>
+    </div>
+    <div class="body-projet-popup">
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">01</span>
+            <span class="projet-date">2025</span>
+            <span class="projet-titre">Yshop</span>
+            <span class="projet-role">Prédiction de ventes</span>
+          </div>
+          <p class="projet-desc">Modèle de prédiction de vente développé pour une boutique fictive dans le cadre de la formation Bachelor Data & IA. Analyse des tendances et des données historiques pour anticiper les ventes futures. <br><a href="https://github.com/Alec34pi/Yshop" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">02</span>
+            <span class="projet-date">2026</span>
+            <span class="projet-titre">Prediction AQI</span>
+            <span class="projet-role">Prédiction de la Qualité de l'Air</span>
+          </div>
+          <p class="projet-desc">Prédiction de la qualité de l'air à l'échelle mondiale via Machine Learning, sur un dataset réel de plus de 23 000 villes dans le monde (2017–2022). <br><a href="https://github.com/Alec34pi/prediction_aqi" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">03</span>
+            <span class="projet-date">2026</span>
+            <span class="projet-titre">Détection Fraude</span>
+            <span class="projet-role">Modèle de détection de fraude</span>
+          </div>
+          <p class="projet-desc">Feature Engineering avancé sur données fortement déséquilibrées (0.17% de fraudes). Optimisation via GridSearchCV, pipelines ML complets, analyse ROC et Learning Curves. <br><a href="https://github.com/Alec34pi/Detection_Fraude" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">04</span>
+            <span class="projet-date">2026</span>
+            <span class="projet-titre">Churn Télécom</span>
+            <span class="projet-role">Prédiction de Churn Client</span>
+          </div>
+          <p class="projet-desc">Système complet de prédiction du churn client en télécommunications, couvrant tout le cycle ML — de l'analyse des données au déploiement en production avec API et approche MLOps. <br><a href="https://github.com/Alec34pi/ProjetFinal_conceptIA_M1" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span class="tag">MLOps</span><span class="tag">API</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========== POPUP PROJET PERSONNEL ========== -->
+  <div id="projperso-popup" class="popup-hidden popup-projperso">
+    <div class="header-popup">
+      <div class="header2-popup"><h2>PROJET PERSONNEL</h2></div>
+      <button class="close-popup" data-popup="projperso-popup">ESC</button>
+    </div>
+    <div class="body-projet-popup">
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">01</span>
+            <span class="projet-titre">LotoPredict</span>
+            <a href="https://github.com/Alec34pi" target="_blank" class="github-link">⌥ GitHub</a>
+            <span class="projet-role">Prédiction de tirage</span>
+          </div>
+          <p class="projet-desc">Modèle de prédiction de tirage de loto basé sur l'analyse statistique des tirages passés. <br><a href="https://github.com/Alec34pi/PredictLoto" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">02</span>
+            <span class="projet-titre">post-it-wall</span>
+            <a href="https://github.com/Alec34pi" target="_blank" class="github-link">⌥ GitHub</a>
+            <span class="projet-role">Mur de post-it interactif</span>
+          </div>
+          <p class="projet-desc">Application web permettant de créer un mur de post-it en ligne, avec gestion des notes, couleurs et positions. <br><a href="https://github.com/Alec34pi/postItWall" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">03</span>
+            <span class="projet-titre">DashQuest</span>
+            <a href="https://github.com/Alec34pi" target="_blank" class="github-link">⌥ GitHub</a>
+            <span class="projet-role">Suivi d'objectifs gamifié</span>
+          </div>
+          <p class="projet-desc">Site permettant de se fixer des objectifs sous forme de quêtes comme dans un jeu vidéo, avec système de progression et récompenses. <br><a href="https://github.com/Alec34pi/DashQuest" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-item no-timeline">
+        <div class="projet-content">
+          <div class="projet-header">
+            <span class="projet-num">04</span>
+            <span class="projet-titre">SimpleGames</span>
+            <a href="https://github.com/Alec34pi" target="_blank" class="github-link">⌥ GitHub</a>
+            <span class="projet-role">Collection de mini-jeux</span>
+          </div>
+          <p class="projet-desc">Site regroupant plusieurs petits jeux jouables en solo ou contre un bot, entièrement développés en HTML/CSS/JS. <br><a href="https://github.com/Alec34pi/SimpleGames" target="_blank" rel="noopener noreferrer">Github</a></p>
+          <div class="projet-tags">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="./scripts/chargement.js"></script>
+  <script src="./scripts/particules.js"  ></script>
+  <script src="./scripts/gestionPopup.js"></script>
