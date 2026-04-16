@@ -26,28 +26,6 @@ body::before {
   z-index: 0;
 }
 
-a {
-  text-decoration: none;        /* Supprime le soulignement */
-  color: #fff3c2;               /* Jaune très clair */
-  transition: opacity 0.2s, color 0.2s;
-  cursor: none;                 /* Garde ton curseur personnalisé */
-}
-
-/* État : Déjà visité ou cliqué */
-a:visited {
-  color: #fff3c2;               /* Garde la même couleur après clic */
-}
-
-/* État : Survol (Hover) */
-a:hover {
-  color: #ffffff;               /* Devient blanc pur au survol pour l'effet HUD */
-  text-shadow: 0 0 8px rgba(255, 243, 194, 0.6); /* Petit halo lumineux */
-}
-
-/* État : Actif (au moment du clic) */
-a:active {
-  color: #fff3c2;
-}
 
 /* =====================
    CURSEUR PERSONNALISÉ
@@ -124,6 +102,7 @@ body.clicking #cursor-dot {
   background: rgba(200,168,75,0.08); border-radius: 2px; overflow: hidden;
   border: 1px solid rgba(200,168,75,0.3); margin-top: 1rem;
 }
+#particle-progress { position: absolute; inset: 0; width: 100%; height: 100%; }
 .progress-overlay { position: absolute; inset: 0; overflow: hidden; }
 .progress-fill {
   height: 100%; width: 0%; transition: width 0.3s ease;
@@ -195,7 +174,7 @@ body.clicking #cursor-dot {
   margin-bottom: 12px; position: relative; z-index: 2;
 }
 
-#particles { top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)) brightness(1.2); }
+#particles { top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
 
 
 /* =====================
@@ -239,18 +218,146 @@ body.clicking #cursor-dot {
 
 
 /* =====================
-   RESPONSIVE
+   RESPONSIVE — TABLETTE (≤ 900px)
 ===================== */
 @media (max-width: 900px) {
   html, body { overflow: auto; cursor: auto; }
   #cursor-dot, #cursor-ring { display: none; }
+
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "content content"
+      "left right"
+      "footer footer";
+    height: auto;
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .sidebar.left  { display: grid; grid-template-rows: auto auto; gap: 12px; }
+  .sidebar.right { display: grid; grid-template-rows: auto auto; gap: 12px; }
+
+  .content { min-height: 240px; }
+  .main-title { font-size: 20px; letter-spacing: 4px; }
+
+  .footer { grid-template-columns: 1fr; gap: 10px; }
+
+  .popup-profil, .popup-skills,
+  .popup-projpro, .popup-projform, .popup-projperso {
+    width: calc(100vw - 32px) !important;
+    left: 16px !important;
+    right: 16px !important;
+    transform: none !important;
+    top: 16px !important;
+    bottom: auto !important;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+  }
+
+  .skills-two-cols { grid-template-columns: 1fr; gap: 12px; }
+  .skill-name { min-width: 100px; font-size: 9px; }
+}
+
+
+/* =====================
+   RESPONSIVE — MOBILE (≤ 600px)
+===================== */
+@media (max-width: 600px) {
+  html, body { overflow-y: auto; }
+
   .container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
-    grid-template-areas: "content" "left" "right" "footer";
-    height: auto;
+    grid-template-areas:
+      "content"
+      "left"
+      "right"
+      "footer";
+    padding: 10px;
+    gap: 10px;
   }
-  .footer { grid-template-columns: 1fr; }
+
+  .content { min-height: 180px; }
+  .main-title { font-size: 16px; letter-spacing: 3px; margin-bottom: 8px; }
+
+  /* sidebars en deux colonnes côte à côte */
+  .sidebar.left, .sidebar.right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+
+  .box h2, .footer-box h2 { font-size: 9px; letter-spacing: 2px; padding: 6px; }
+  .box p, .footer-box p   { font-size: 10px; padding: 4px 6px; }
+
+  .footer { grid-template-columns: 1fr; gap: 10px; }
+
+  /* popups plein écran */
+  .popup-profil, .popup-skills,
+  .popup-projpro, .popup-projform, .popup-projperso {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    left: 0 !important; right: 0 !important;
+    top: 0 !important; bottom: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    border-left: none !important; border-right: none !important;
+    padding: 14px 12px !important;
+    overflow-y: auto;
+    display: flex; flex-direction: column;
+  }
+
+  /* header popup sticky */
+  .header-popup {
+    position: sticky; top: 0;
+    background: rgba(10,8,4,0.98);
+    z-index: 10;
+    padding-bottom: 10px; margin-bottom: 4px;
+  }
+  .header-popup h2 { font-size: 11px; }
+  .close-popup { padding: 4px 8px; font-size: 10px; }
+
+  /* profil mobile : colonne unique */
+  .body-profil-popup { flex-direction: column; }
+  .left-profil-popup {
+    flex-direction: row; flex-wrap: wrap; justify-content: space-around;
+    border-right: none; border-bottom: 1px solid rgba(200,168,75,0.12);
+    padding: 0 0 12px 0; margin-bottom: 12px;
+  }
+  .infos-profil-popup { margin: 6px 10px; }
+  .right-profil-popup { margin: 0; }
+  .cours-profil-popup .date { font-size: 9px; min-width: 70px; }
+  .cours-profil-popup p     { font-size: 10px; }
+
+  /* skills mobile */
+  .skills-two-cols { grid-template-columns: 1fr; gap: 10px; }
+  .skill-name { min-width: 90px; font-size: 9px; }
+  .skill-pct  { font-size: 8px; }
+
+  /* projets mobile */
+  .body-projet-popup { max-height: none; }
+  .body-projet-popup.timeline .projet-item { gap: 8px; }
+  .tl-dot  { width: 8px; height: 8px; }
+  .tl-line { min-height: 20px; }
+
+  .projet-header { gap: 5px; }
+  .projet-num    { font-size: 8px; }
+  .projet-date   { font-size: 8px; }
+  .projet-titre  { font-size: 11px; }
+  .projet-role {
+    margin-left: 0; border-left: none; padding-left: 0;
+    width: 100%; font-size: 9px; color: rgba(255,180,50,0.6);
+  }
+  .projet-desc { font-size: 9px; line-height: 1.5; }
+  .tag { font-size: 7px; padding: 1px 5px; }
+  .github-link { font-size: 8px; padding: 1px 6px; }
+  .badge-encours { font-size: 7px; padding: 1px 5px; }
 }
 
 
